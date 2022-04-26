@@ -1,0 +1,17 @@
+.navbar {
+    background-color: rgb(174, 168, 168); 
+    display: flex; 
+  }
+  
+.navbar-icon {
+    display: flex;  
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 10px; 
+}
+  
+.navbar .navbar-item {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-end; 
+}
