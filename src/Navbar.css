@@ -1,9 +1,14 @@
 .navbar {
-    background-color: rgb(174, 168, 168); 
     display: flex; 
     justify-content:space-evenly; 
   }
   
 .navbar-icon {
     margin: 10px;
+}
+
+#title {
+  font-size: 30px; 
+  color: rgb(136, 143, 232); 
+  font-weight: bold; 
 }

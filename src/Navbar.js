@@ -1,6 +1,5 @@
 import React from "react";
 import './Navbar.css'; 
-import {useState} from "react"; 
 
 
 // functional component to return 
@@ -17,5 +16,5 @@ const Navbar = () => {
     ); 
 }
 
-export default Navbar
+export default Navbar; 
 
