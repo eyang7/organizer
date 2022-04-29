@@ -1,3 +1,9 @@
-.category-button { 
+.category { 
     margin: 10px; 
+    display: flex; 
+    justify-content: center;
+}
+
+.category-button {
+    font-weight: bold;
 }
