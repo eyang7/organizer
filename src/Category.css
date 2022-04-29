@@ -1,9 +1,30 @@
-.category { 
-    margin: 10px; 
+.category {
     display: flex; 
-    justify-content: center;
+    justify-content: center; 
 }
 
-.category-button {
-    font-weight: bold;
+
+.category input[type = text] {
+    display: flex; 
+    justify-content: center; 
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
 }
+
+.category input[type=text]:hover{
+    box-shadow: 30px; 
+}
+
+.category button {
+    display:flex; 
+    text-align: center;
+    padding: 7px; 
+}
+
+

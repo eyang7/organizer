@@ -6,34 +6,34 @@ import {useState} from "react";
 // constants that change state 
 
 // functional component to return 
-// const Category = () => {    
-//     return (
-//         <div className = "category">
-//             <button className = "category-button" onClick={() => AddTab()}> New Tab </button>
-//         </div>
+const Category = () => {   
+    const [tab, setTab] = useState(''); 
+    const [isSubmit, changeSubmit] = useState(false); 
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        changeSubmit(true); 
+    }
 
-//     ); 
-// }
-
-// export default Category; 
-
-$('form').submit(function(e) {
-    e.preventDefault(); 
-
-    $('#tabs').append($('<li id="list">').text($('#m').val()));
-})
-
-// need to create a tab component using dictionary of tab name to metadata 
-
-// helper functions
-function AddTab() {
+    function DisplayTabs() {
+        if (isSubmit) {
+            return (
+                <li> {tab} </li>
+            ); 
+        }
+    }
     return (
-        <form> 
-            <input id="m" placeholder="Enter your message..." autocomplete="off" required />
-        </form>
+        <div className = "category"> 
+            <form> 
+                <input type = "text" placeholder="Add new tab..." autocomplete="off" required 
+                    value = {tab} 
+                    onChange={(e) => setTab(e.target.value)} />
+                <button type = "submit" value = "Submit" onClick={(e) => handleSubmit(e)}> Submit</button>
+            </form>
+        <div className = "newTab"> {DisplayTabs()} </div>
+        </div>
     ); 
 }
 
-// <div className = "category">
-//     <button className = "category-button" onClick={() => AddTab()}> New Tab </button>
-//  </div>
+export default Category; 
+
+// need to create a tab component using dictionary of tab name to metadata 
