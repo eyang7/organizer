@@ -10,7 +10,7 @@ const [value, setValue] = useState(); //value of the input form
 const Category = () => {
     return (
         <div className = "category">
-            <button className = "category-button" onClick={AddTab}> New Tab </button>
+            <button className = "category-button" onClick={() => AddTab()}> New Tab </button>
             
             {/* want to return tab value as well */}
 
