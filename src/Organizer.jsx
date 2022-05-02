@@ -19,6 +19,7 @@ const Organizer = () => {
 
     function DisplayTabs() {
         if (isSubmit) {
+            changeSubmit(false); 
             return (
                 tabs.map((tab) => <li>{tab} </li>)  //fix mapping all arrays
             ); 
@@ -33,7 +34,7 @@ const Organizer = () => {
             <form> 
                 <input type = "text" placeholder="Add new tab..." autocomplete="off" required 
                     value = {tab} 
-                    onChange={(e) => updateTabs(tabs.push(e.target.value))} />
+                    onChange={(e) => updateTabs(tabs => [...tabs, e.target.value])} />
                 <button type = "submit" value = "Submit" onClick={(e) => handleSubmit(e)}> Submit</button>
             </form>
             </div>
@@ -47,7 +48,7 @@ const Organizer = () => {
         </div>
 
         // {/* how to return a value(name) to add to addToTab ==> need a GET request to get info */}
-        // {/*create a tab component if necessary, and then add to tabs state*/}
+        // {/*create a tab component if necessary, and then add to tabs state*/
         // {/* each tab data using Node.js and then display tabs through frontend */}
         // {/* DisplayTabs();  */}
     ); 
