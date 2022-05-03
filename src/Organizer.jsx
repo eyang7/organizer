@@ -31,53 +31,77 @@ const Organizer = () => {
         }
     }
     
-    return(
-        <div className="app">
-            <Navbar/> 
-            
-            <div className = "category"> 
-            <form onSubmit = {(e) => handleSubmit(e)}> 
-                <input type = "text" value = {curr} placeholder="Add new tab..." autocomplete="off" required 
-                onChange = {(e) => {updateCurr(curr + e.target.value[index]); updateIndex(index +1)}}/>
-                {/* add if value is backspace delete the index */}
-            </form>
-            </div>
-
-
-            {/* this is where teh tabs will go */}
-
-            <div className = "tabs">
-            <ul id = "tabs-list">
-            <div className = "newTab"> {DisplayTabs()} </div>
-            </ul>
-            </div>
-
-
-            {/* clear button that resets everything */}
-            <Button id = "reset"/*onClick={}*/> Reset </Button>
+    return (
+        <div> 
+            {CreateTab("test")}
         </div>
-
-        // {/* each tab data using Node.js and then display tabs through frontend */}
     ); 
+    // return(
+    //     <div className="app">
+    //         <Navbar/> 
+            
+    //         <div className = "category"> 
+    //         <form onSubmit = {(e) => handleSubmit(e)}> 
+    //             <input type = "text" value = {curr} placeholder="Add new tab..." autocomplete="off" required 
+    //             onChange = {(e) => {updateCurr(curr + e.target.value[index]); updateIndex(index +1)}}/>
+    //             {/* add if value is backspace delete the index */}
+    //         </form>
+    //         </div>
+
+
+    //         {/* this is where teh tabs will go */}
+
+    //         <div className = "tabs">
+    //         <ul id = "tabs-list">
+    //         <div className = "newTab"> {DisplayTabs()} </div>
+    //         </ul>
+    //         </div>
+
+
+    //         {/* clear button that resets everything */}
+    //         <Button id = "reset"/*onClick={}*/> Reset </Button>
+    //     </div>
+
+    //     // {/* each tab data using Node.js and then display tabs through frontend */}
+    // ); 
 }
 
 export default Organizer; 
 
-// tab component 
-function CreateTab(name) {
+// tab component => 
+const CreateTab = (name) => {
 
     function DisplayTabItem() {
         if (isSubmit) {
             return (
-                items.map((item) => <li>{item} </li>)  //fix mapping all arrays
+                items.map((item) => <li id = "tab-item">
+                    <CheckBox/> 
+                    {item} </li>)  //fix mapping all arrays
             ); 
         }
     }
 
+    const CheckBox = () => {
+        const [checked, setChecked] = useState(false); 
+    
+        const handleChange = () => {
+            setChecked(!checked); 
+        }
+        
+        return (
+            <label>
+                <input type = "checkbox"
+                    checked = {checked} onChange = {handleChange}/>
+            </label>
+        ); 
+    }
+    
     const handleSubmit = (e) => {
         e.preventDefault(); 
         updateItems([...items, curr]); 
         updateSubmit(true); 
+        updateIndex(0); 
+        updateCurr(""); 
     }
 
     const [tabIndex, updateIndex] = useState(0); 
@@ -100,6 +124,7 @@ function CreateTab(name) {
         </div>
     ); 
 }
+
 
 
 // might need a backend so that the data can persist from server to server 

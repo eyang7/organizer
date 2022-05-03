@@ -31,22 +31,37 @@
 /* TABS CSS */
 .tab {
     display: flex; 
-    padding: 2em;
+    flex-direction: column;
+    padding: 8px;
+    max-width: 300px; 
+    background-color: aliceblue;
+    border-radius: 12px;
+    border: 1px solid rgb(136, 143, 232); 
     margin: 0 auto;
+    margin-top: 20vh; 
     text-align: center;
     box-shadow: var(--shadow);
     transition: transform 0.2s linear;
   }
   
   .tab:hover {
-    transform: translateY(-7px);
+    transform: translateY(-10px);
   }
   
   .tab-list{
     display: flex;
+    flex-direction: column; 
     flex-wrap: wrap;
+    text-align: left; 
+    list-style: none; 
+    padding: 0; 
     justify-content: center;
-    margin: 1.2em 0;
+    margin-top: 0px; 
+    margin-bottom: 1.2em 0;
+  }
+
+  #tab-item {
+    padding: 1.4px; 
   }
   
   /* .tab {
