@@ -28,3 +28,31 @@
 }
 
 
+/* TABS CSS */
+.tab {
+    display: flex; 
+    padding: 2em;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s linear;
+  }
+  
+  .tab:hover {
+    transform: translateY(-7px);
+  }
+  
+  .tab-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1.2em 0;
+  }
+  
+  /* .tab {
+    margin: 0.5em;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--clr-fg-alt);
+  }
+   */
