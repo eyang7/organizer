@@ -7,19 +7,22 @@ import {useState} from "react";
 
 const Organizer = () => {
     // const states
-    const [tab, setTab] = useState(''); 
     const [isSubmit, changeSubmit] = useState(false); 
-    const [tabs, updateTabs] = useState([]); //fix array 
+    const [tabs, updateTabs] = useState([]);
+    const [curr, updateCurr] = useState(""); 
+    const [index, updateIndex] = useState(0); 
 
     // helper functions
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        changeSubmit(true); 
+        updateTabs([...tabs, curr]); 
+        updateIndex(0); 
+        updateCurr(""); 
+        changeSubmit(true);  //TODO: fix bc everytime it will now be true and display everything
     }
 
     function DisplayTabs() {
         if (isSubmit) {
-            changeSubmit(false); 
             return (
                 tabs.map((tab) => <li>{tab} </li>)  //fix mapping all arrays
             ); 
@@ -31,11 +34,9 @@ const Organizer = () => {
             <Navbar/> 
             
             <div className = "category"> 
-            <form> 
-                <input type = "text" placeholder="Add new tab..." autocomplete="off" required 
-                    value = {tab} 
-                    onChange={(e) => updateTabs(tabs => [...tabs, e.target.value])} />
-                <button type = "submit" value = "Submit" onClick={(e) => handleSubmit(e)}> Submit</button>
+            <form onSubmit = {(e) => handleSubmit(e)}> 
+                <input type = "text" value = {curr} placeholder="Add new tab..." autocomplete="off" required 
+                onChange = {(e) => {updateCurr(curr + e.target.value[index]); updateIndex(index +1)}}/>
             </form>
             </div>
 
@@ -45,6 +46,7 @@ const Organizer = () => {
             </ul>
 
 
+            {/* clear button that resets everything */}
         </div>
 
         // {/* how to return a value(name) to add to addToTab ==> need a GET request to get info */}
