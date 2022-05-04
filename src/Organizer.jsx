@@ -18,6 +18,25 @@ const Organizer = () => {
     }
     const [items, setItems] = useState([])
     const [curr, updateCurr] = useState(""); 
+
+    React.useEffect(() => {
+        const data = localStorage.getItem('items'); 
+        const data1 = localStorage.getItem('curr'); 
+        console.log(localStorage); 
+        if (data) {
+            setItems(JSON.parse(data)); 
+        }
+        if (data1) {
+            updateCurr(JSON.parse(data1)); 
+        }
+    },[]); 
+
+    React.useEffect(() => {
+        localStorage.setItem('items', JSON.stringify(items)); 
+        localStorage.setItem('curr', JSON.stringify(curr)); 
+        console.log(localStorage); 
+    }); 
+
     return (
         <VStack>
             <Navbar/> 
