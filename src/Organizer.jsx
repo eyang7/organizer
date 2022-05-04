@@ -1,9 +1,8 @@
 import React, {useState} from "react"; 
 import Navbar from './Navbar'; 
 import Category from './Category'; 
-import Button from "react-bootstrap/Button"; 
 import { CreateTab } from "./CreateTab";  //empty list of tab components 
-import { Wrap, Input} from "@chakra-ui/react";
+import { Wrap, Input, Button, VStack} from "@chakra-ui/react";
 const Organizer = () => {
     const handleSubmit = (e) => {
         e.preventDefault(); 
@@ -11,10 +10,16 @@ const Organizer = () => {
         console.log(curr)
         updateCurr(""); 
     }
+
+    const handleReset = (e) => {
+        e.preventDefault(); 
+        setItems([]); 
+        updateCurr(""); 
+    }
     const [items, setItems] = useState([])
     const [curr, updateCurr] = useState(""); 
     return (
-        <div className="app">
+        <VStack>
             <Navbar/> 
 
             <div className = "category"> 
@@ -28,12 +33,13 @@ const Organizer = () => {
 
              <div className = "tabs">
              <ul id = "tabs-list">
-             <Wrap spacing= "100px" > {items.map((item, idx) => <CreateTab key= {idx} name= {item} />)} </Wrap>
+             <Wrap justify = "center" spacing= "100px" > {items.map((item, idx) => <CreateTab key= {idx} name= {item} />)} </Wrap>
              </ul>
              </div>
-             {/* clear button that resets everything */}
-             <Button id = "reset"/*onClick={}*/> Reset </Button>
-         </div>
+             
+            
+             <Button id = "reset" onClick = {(e) => handleReset(e)}> Reset </Button>
+        </VStack>
     )
 
     //     // {/* each tab data using Node.js and then display tabs through frontend */}
