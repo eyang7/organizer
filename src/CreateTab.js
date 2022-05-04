@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {ListItem} from './ListItem'
+import { Input } from '@chakra-ui/react'
 export const CreateTab = ({name}) => {
 
   const handleSubmit = (e) => {
@@ -22,8 +23,8 @@ export const CreateTab = ({name}) => {
 
           <div className = "tab-items"> 
           <form onSubmit = {(e) => handleSubmit(e)}> 
-              <input type = "text" value = {curr} placeholder="List new item..."
-              onChange = {(e) => {updateCurr(e.target.value)}}/>
+              <Input type = "text" value = {curr} placeholder="List new item..."
+              isRequired= {true} onChange = {(e) => {updateCurr(e.target.value)}}/>
           </form>
           </div>
       </div>

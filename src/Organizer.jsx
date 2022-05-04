@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Category from './Category'; 
 import Button from "react-bootstrap/Button"; 
 import { CreateTab } from "./CreateTab";  //empty list of tab components 
-import { Flex } from "@chakra-ui/react";
+import { Wrap, Input} from "@chakra-ui/react";
 const Organizer = () => {
     const handleSubmit = (e) => {
         e.preventDefault(); 
@@ -19,7 +19,7 @@ const Organizer = () => {
 
             <div className = "category"> 
             <form onSubmit = {(e) => handleSubmit(e)}> 
-                <input type = "text" value = {curr} placeholder="Add new tab..."
+                <Input isRequired= {true} type = "text" value = {curr} placeholder="Add new tab..."
                 onChange = {(e) => updateCurr(e.target.value)}/>
             </form>
             </div>
@@ -28,7 +28,7 @@ const Organizer = () => {
 
              <div className = "tabs">
              <ul id = "tabs-list">
-             <Flex flexWrap= "wrap" spacing= "300px" > {items.map((item, idx) => <CreateTab key= {idx} name= {item} />)} </Flex>
+             <Wrap spacing= "100px" > {items.map((item, idx) => <CreateTab key= {idx} name= {item} />)} </Wrap>
              </ul>
              </div>
              {/* clear button that resets everything */}
