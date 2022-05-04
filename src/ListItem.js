@@ -1,3 +1,4 @@
+import { VStack } from '@chakra-ui/react';
 import React, {useState} from 'react'
 
 export const ListItem = ({key2, text, remove}) => {

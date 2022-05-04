@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {ListItem} from './ListItem'
-import { Input } from '@chakra-ui/react'
+import { Input, VStack } from '@chakra-ui/react'
 export const CreateTab = ({name}) => {
 
   const handleSubmit = (e) => {
@@ -17,7 +17,7 @@ export const CreateTab = ({name}) => {
       setItems(new_items)
   }
   return (
-      <div className = "tab"> 
+      <VStack p="50px" justify= "space-between" className = "tab"> 
           <h3> {name} </h3>
           <ul className = "tab-list"> {items.map((item, idx) => <ListItem key= {idx} key2 = {idx} text= {item} remove= {removeItem}  />)} </ul>
 
@@ -27,6 +27,6 @@ export const CreateTab = ({name}) => {
               isRequired= {true} onChange = {(e) => {updateCurr(e.target.value)}}/>
           </form>
           </div>
-      </div>
+      </VStack>
   ); 
 }
