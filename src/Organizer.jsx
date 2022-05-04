@@ -74,24 +74,27 @@ const CreateTab = (name) => {
     function DisplayTabItem() {
         if (isSubmit) {
             return (
-                items.map((item) => <li id = "tab-item">
-                    <CheckBox/> 
+                items.map((item, idx) => <li id = "tab-item">
+                    <CheckBox idx = {idx}/> 
                     {item} </li>)  //fix mapping all arrays
             ); 
         }
     }
 
-    const CheckBox = () => {
+    const CheckBox = (idx) => {
         const [checked, setChecked] = useState(false); 
-    
+
         const handleChange = () => {
             setChecked(!checked); 
+            if (checked === false) {
+                removeItem(idx); 
+            }
         }
         
         return (
             <label>
                 <input type = "checkbox"
-                    checked = {checked} onChange = {handleChange}/>
+                    defaultChecked = {checked} onClick = {handleChange}/>
             </label>
         ); 
     }
@@ -102,6 +105,13 @@ const CreateTab = (name) => {
         updateSubmit(true); 
         updateIndex(0); 
         updateCurr(""); 
+    }
+
+    function removeItem(idx) {
+        var leftSide = items.slice(0, idx); 
+        var rightSide = items.slice(idx + 1, items.length); 
+        updateItems([...leftSide, ...rightSide]);  
+        DisplayTabItem(); 
     }
 
     const [tabIndex, updateIndex] = useState(0); 
