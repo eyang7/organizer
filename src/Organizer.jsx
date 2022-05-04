@@ -45,6 +45,4 @@ export default Organizer;
 // tab component => 
 
 
-
-
 // might need a backend so that the data can persist from server to server 
