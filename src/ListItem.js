@@ -10,7 +10,7 @@ export const ListItem = ({key2, text, remove}) => {
         remove(key2)
     }
     return (
-        <div>
+        <div className = "check">
             <label>
             <input type = "checkbox"
                 checked = {checked} onChange = {handleChange}/>

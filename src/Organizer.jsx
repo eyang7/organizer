@@ -1,8 +1,10 @@
-import React, {useState} from "react"; 
+import React, {useState, useEffect} from "react"; 
 import Navbar from './Navbar'; 
 import Category from './Category'; 
 import { CreateTab } from "./CreateTab";  //empty list of tab components 
 import { Wrap, Input, Button, VStack} from "@chakra-ui/react";
+import { serializeStyles } from "@emotion/serialize";
+
 const Organizer = () => {
     const handleSubmit = (e) => {
         e.preventDefault(); 
@@ -19,23 +21,21 @@ const Organizer = () => {
     const [items, setItems] = useState([])
     const [curr, updateCurr] = useState(""); 
 
-    React.useEffect(() => {
-        const data = localStorage.getItem('items'); 
-        const data1 = localStorage.getItem('curr'); 
-        console.log(localStorage); 
+    useEffect(() => {
+        const data = window.localStorage.getItem('items'); 
+        // const data1 = window.localStorage.getItem('curr'); 
         if (data) {
             setItems(JSON.parse(data)); 
         }
-        if (data1) {
-            updateCurr(JSON.parse(data1)); 
-        }
+        // if (data1) {
+        //     updateCurr(JSON.parse(data1)); 
+        // }
     },[]); 
 
-    React.useEffect(() => {
-        localStorage.setItem('items', JSON.stringify(items)); 
-        localStorage.setItem('curr', JSON.stringify(curr)); 
-        console.log(localStorage); 
-    }); 
+    useEffect(() => {
+        window.localStorage.setItem('items', JSON.stringify(items)); 
+        // window.localStorage.setItem('curr', JSON.stringify(curr)); 
+    }, [items, curr]); 
 
     return (
         <VStack>

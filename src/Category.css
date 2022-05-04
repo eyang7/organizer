@@ -45,8 +45,8 @@
   }
   
   .tab:hover {
-    transform: translateY(-8px);
-    background-color: rgb(206, 225, 241);
+    transform: translateY(-5px);
+    background-color: rgb(215, 239, 253);
   }
   
   .tab-list{
@@ -68,3 +68,8 @@
  #reset:hover {
     font-weight: bold; 
  }
+
+ .check [type=checkbox]:hover{
+    border-radius: 12px; 
+    border: 10px solid; 
+ }  
